@@ -4,16 +4,47 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+
+        </style>
+        <script>
+
+        </script>
     </head>
 <body>
     
 
     <div id="a1">Hello</div>
+    <div id="root"></div>
    
 
     <script>
-        document.getElementById('a1').innerHTML="Welcome to JavaScript";
-        console.log(2+2);
+            
+            function sub(a,b)
+            {
+                console.log(a-b);
+            }
+
+            function div(a,b){
+                console.log(a/b);
+            }
+
+            function mul(a,b)
+            {
+                console.log(a*b);
+            }
+            sub(3,4);
+            sub(4,3);
+            div(10,2);
+            div(10/0);
+            mul(5,20);
+               
+            function name(a,b)
+            {
+                console.log('Hello '+a+' '+b+' How are you ?');
+            }
+            name('ashok','thombre');
+
     </script>
 </body>
 </html>
