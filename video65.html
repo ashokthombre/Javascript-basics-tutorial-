@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        var number = prompt("Please enter The number to check if it is palindrom or not");
+
+        var x=parseFloat(number);
+         var y=x.toString();
+         console.log(y+10);
+        console.log(x+10.12);
+
+        if (myFunction(number)) {
+            console.log("String is pelindrome");
+        }
+        else {
+            console.log("String is not pelindrome");
+        }
+
+
+        function myFunction(number) {
+            var charArray = [...number];
+
+            var start = 0;
+            var end = charArray.length - 1;
+            var isPlendrome = true;
+
+            while (start < end) {
+                if (charArray[start] != charArray[end]) {
+
+                    isPlendrome = false;
+                    break;
+                    return isPlendrome;
+
+
+                }
+                start++;
+                end--;
+
+            }
+            return isPlendrome;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
