@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div[data-a="fan"] {}
+
+        .fanBox {
+            height: 400px;
+            width: 400px;
+            background-image: url("img/fan.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: auto;
+            animation-name: fan;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes fan {
+            0% {
+                transform: rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotate(359deg);
+            }
+
+        }
+   
+        .buttongroup > button:first-child{
+            background-color: rgb(177, 172, 172);
+            border: none;
+            color: white;
+            width: 100px;
+            height: 50px;
+            padding: 20px 10px;
+             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            cursor: pointer;
+        }
+        .buttongroup>button:nth-child(2),.buttongroup>button:nth-child(3),.buttongroup>button:nth-child(4)
+        {
+          background-color: rgb(177, 172, 172);
+            border: none;
+            color: white;
+            text-align: center;
+            width: 30px;
+         
+            height: 50px;
+            padding: 20px 10px;
+             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+             cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fanBox" id="fanboxx" data-a="fan">
+
+    </div>
+
+    <div style="text-align: center; margin-top: 0px;" class="buttongroup">
+        <button onclick="startFan(0)">STOP</button>
+        <button onclick="startFan(1)">1</button>
+        <button onclick="startFan(2)">2</button>
+        <button onclick="startFan(3)"> 3</button>
+    </div>
+
+    <script>
+
+  
+        function startFan(speed) {
+            if (speed == 0) {
+                document.getElementById('fanboxx').style.animationPlayState = 'paused';
+            }
+         else if (speed == 1) {
+                //  alert(speed)
+                //    document.getElementById('fanboxx').style.animationPlayState = 'running';
+                //  document.getElementById('fanboxx').style.animationDuration = '1s';
+                document.querySelector('.fanBox').style.animationPlayState = 'running';
+                document.querySelector('#fanboxx').style.animationDuration = '1s'
+            }
+            else if (speed == 2) {
+                // alert(speed)
+                //      document.getElementById('fanboxx').style.animationPlayState='running';
+                //    document.getElementById('fanboxx').style.animationDuration='0.5s';
+                document.querySelector('[data-a="fan"]').style.animationPlayState = 'running'
+                document.querySelector('[data-a="fan"]').style.animationDuration = '0.5s'
+               
+
+            }
+            else {
+                //  alert(speed)
+                document.getElementById('fanboxx').style.animationPlayState = 'running';
+                document.getElementById('fanboxx').style.animationDuration = '0.1s';
+            }
+        }
+    </script>
+</body>
+
+</html>
