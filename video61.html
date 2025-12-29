@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        var students = {
+
+            id: 1,
+            name: "Ashok Thombre",
+            address: 'Pune',
+            friends: ['Ashok', 'sunil', 'akash'],
+            teachers: [{
+                name: 'Magdum',
+                phone: 9970689666
+            },
+            {
+                name: 'Patil',
+                phone: 9270801414
+            }
+            ],
+            sister: {
+                name:'Vidhya',
+                profession:'Teacher',
+                hobbis:['reading','writing','dancing']
+            }
+        };
+
+        console.log(students.id, students.name, students.address, students.friends, students.teachers[0].name);
+
+        var x = ['sunil', students];
+        console.log(x)
+
+        for (var i = 0; i < students.teachers.length; i++) {
+            console.log(students.teachers[i].name);
+            console.log(students.teachers[i].phone);
+        }
+
+    </script>
+</body>
+
+</html>
