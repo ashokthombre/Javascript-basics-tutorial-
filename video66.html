@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action=""  onsubmit="return submitForm()">
+        <input id="n1" type="text" name="val1" placeholder="enter value 1">
+        <input data-a="n2" type="text" name="val2" placeholder="enter value 2">
+
+        <button type="submit">Ok</button>
+
+    </form>
+
+
+    <script>
+
+        function submitForm() {
+
+            var n1 = document.getElementById('n1').value;
+            alert(n1);
+            let n2 = document.querySelector('[data-a="n2"]').value;
+
+            alert(n2);
+
+            let result = parseInt(n1) + parseInt(n2);
+            alert(result);
+
+            localStorage.setItem("result",result);
+             
+        return false;
+
+
+        }
+    </script>
+
+</body>
+
+</html>
