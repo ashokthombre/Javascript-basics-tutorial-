@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+
+ 
+    <script>
+      
+      let x={
+        name:'Ashok',
+        sirname:'Thombre',
+        myFunc:function(){
+             console.log(this.name);
+        },
+        myFuncA:function(){
+                console.log(this.sirname);
+        },
+        lastname:function(){
+            return this.name+"  "+this.sirname;
+        }
+
+      };
+         
+         console.log(x.lastname());
+         x.myFunc()
+         x.myFuncA();
+
+       let y=[{
+            name:"Ashok",
+            address:"Pune",
+            friends:["A","B","C"]
+
+       }];
+     
+     
+
+       y.forEach(element => {
+           element.friends.forEach(a=>{
+               console.log(a);
+           });
+
+       });
+
+       let teachers=['AA','BB','CC','DD'];
+        
+       for(teacher of teachers)
+       {
+        console.log(teacher);
+       }
+
+    </script>
+
+</body>
+</html>
