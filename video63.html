@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .a {
+
+            height: 400px;
+            width: 400px;
+            margin: auto;
+
+        }
+        #bulb{
+           height: 400px;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="a">
+        <img id="bulb" src="./img/bulb1.png" alt="">
+        <button onclick="clickMe('ON')">ON</button>
+        <button onclick="clickMe('OFF')">OFF</button>
+    </div>
+    <script>
+
+        function clickMe(state) {
+
+            //alert(a);
+
+
+            if (state == 'ON') {
+                document.body.style.backgroundColor = "yellow"
+                document.getElementById('bulb').src = "./img/bulb2.png"
+
+            }
+            else {
+                document.body.style.backgroundColor = "black"
+                document.getElementById('bulb').src = "./img/bulb1.png"
+
+            }
+
+        };
+
+
+    </script>
+</body>
+
+</html>
