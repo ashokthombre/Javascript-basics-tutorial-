@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1d1d1d;
+        }
+
+        .mySpan {
+            font-size: 6em;
+            font-family: "Roboto", sans-serif;
+            font-weight: bold;
+            color: white;
+            padding-left: 200px;
+            display: block;
+            padding-top: 100px;
+            clear: both;
+
+
+        }
+
+        .mySpan>span:not(.mySpan >span:first-child):hover {
+            color: #05FDD8;
+            animation-play-state: running;
+            transition: all 0.4s linear;
+               transform: scale(1.5, 1.5);
+
+
+        }
+
+        .mySpan>span:first-child {
+            color: #FD2155;
+            text-shadow: -5px 0 0 #05FDD8;
+        }
+
+        .mySpan span {
+            float: left;
+              transform: scale(1, 1);
+
+        }
+        .myimg{
+            position: fixed;
+            top: 20px;
+            right: 0px;
+            width: 100px;
+        }
+
+        /* .mySpan>span:not(.mySpan >span:first-child) {
+            animation-name: anim;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+            animation-play-state: paused;
+            animation-duration: .4s;
+
+        } */
+
+        @keyframes anim {
+            0% {
+                transform: scale(1, 1);
+            }
+
+            50% {
+                transform: scale(1.5, 0.5);
+            }
+
+            75% {
+                transform: scale(1.75, .25);
+            }
+
+            100% {
+                transform: scale(1, 1);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+ <img class="myimg" src="./img/ribon.jpg" alt="">
+    <span class="mySpan">
+        <span>J</span>
+        <span>a</span>
+        <span>c</span>
+        <span>K</span>
+    </span>
+    
+
+</body>
+
+</html>

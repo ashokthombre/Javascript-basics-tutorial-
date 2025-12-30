@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1d1d1d;
+        }
+
+        .myForm table {
+            margin: auto;
+            width: 40%;
+
+        }
+
+        .myForm input:not(.myForm input[type="submit"]),
+        .myForm textarea {
+            background-color: #2b2b2b;
+            border: none;
+            width: 100%;
+            height: 50px;
+            padding-left: 20px;
+        }
+
+        .myForm input:focus,
+        .myForm textarea:focus {
+           
+            outline: none;
+            border-bottom: 5px solid green;
+        }
+
+        input::placeholder {
+            color: white;
+        }
+
+        input {
+            color: white;
+        }
+
+        textarea {
+            color: white;
+        }
+
+        textarea::placeholder {
+            color: white;
+        }
+     .err{
+        color: red;
+     }
+    </style>
+</head>
+
+<body>
+
+    <form action="" class="myForm" onsubmit="return mySubmit()">
+        <table border="0" cellpadding="10" cellspacing="10">
+
+
+            <tr>
+                <td>
+                    <input type="text" name="fname" placeholder="Name">
+                    <span id="err" class="err"></span>
+                </td>
+                <td>
+                    <input id="email" type="text" name="email" placeholder="Email">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input data-a="subject" type="text" name="subject" placeholder="Subject">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea name="message" placeholder="message" id="textarea"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="submit" value="Send Message !" style="float: right; color: black;">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+
+
+    <script>
+        function mySubmit() {
+
+            var name = document.querySelector('.myForm input[name=fname]').value;
+            var email = document.getElementById('email').value;
+            var subject = document.querySelector('.myForm input[data-a=subject]').value;
+            var text = document.getElementById('textarea').value;
+            if (name != '' && email != '' && subject != '' && text != '') {
+                
+                alert(name);
+                alert(email);
+                alert(subject);
+                alert(text)
+            }
+            else{
+                document.getElementById('err').innerHTML="*Fill ALL fields"
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>
