@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body id="body">
+
+    <script>
+
+        //1. create a header element/tag using JS
+
+        var h = document.createElement('header');
+        h.innerHTML = "Header"
+        //  console.log(h);
+        //2. now tell the js to place this header 
+
+        document.getElementById('body').appendChild(h);
+        document.querySelector('header').setAttribute('class', 'a_header');
+        //  document.body.style.margin = '0px';
+
+
+        var x = document.getElementsByClassName('a_header');
+        x[0].style.width = '100%';
+        x[0].style.height = '150px'
+        x[0].style.border = '2px solid black';
+
+        var y = document.getElementsByTagName('header');
+        y[0].style.color = 'green';
+        y[0].style.fontSize = '3em';
+        y[0].style.textAlign = 'center';
+        y[0].style.lineHeight = '150px';
+
+        //Navigation
+
+        var nav = document.createElement('nav');
+        nav.innerHTML = "Navigation"
+        document.body.appendChild(nav);
+        document.querySelector('nav').setAttribute('class', 'a_nav');
+
+        var a_nav = document.getElementsByClassName('a_nav');
+        a_nav[0].style.width = '100%';
+        a_nav[0].style.height = '100px';
+        a_nav[0].style.border = '2px solid black';
+        a_nav[0].style.color = 'green';
+        a_nav[0].style.fontSize = '2em'
+        a_nav[0].style.textAlign = 'center';
+        a_nav[0].style.lineHeight = '100px';
+        a_nav[0].style.marginTop = '10px';
+        a_nav[0].style.marginBottom = '10px';
+        //console.log(a_nav)
+
+
+
+        // DIV created
+
+        var div = document.createElement('div');
+
+        document.body.appendChild(div);
+        document.querySelector('div').setAttribute('class', 'box');
+        var box = document.getElementsByClassName('box');
+        box[0].style.width = '100%';
+        box[0].style.height = '500px';
+        box[0].style.border = '1px solid black';
+        div.style.display = 'flex';
+        div.style.justifyContent = 'space-between';
+
+
+
+        // Aside A
+
+        var asideA = document.createElement('aside');
+        asideA.innerHTML = "Content";
+
+        div.appendChild(asideA)
+        document.querySelector('aside').setAttribute('class', 'a_aside');
+
+        var a_aside = document.getElementsByClassName('a_aside');
+        a_aside[0].style.width = '20%'
+        a_aside[0].style.height = '100%'
+        a_aside[0].style.border = '1px solid black'
+        a_aside[0].style.color = 'green';
+        a_aside[0].style.fontSize = '1em';
+        a_aside[0].style.textAlign = 'center';
+        a_aside[0].style.lineHeight = '500px';
+        a_aside[0].style.marginBottom = '10px';
+        a_aside[0].style.float = 'left'
+
+        console.log(a_aside);
+
+
+
+        //Aside B
+
+
+        // var asideB = document.createElement('aside');
+        // console.log(asideB)
+        // asideB.innerHTML = "Content";
+
+        // div.appendChild(asideB)
+        // document.querySelector('aside[1]').setAttribute('class', 'a_asideB');
+
+        // var a_asideB = document.getElementsByClassName('a_asideB');
+        // console.log(a_asideB)
+        // a_asidB.style.width = '20%'
+        // a_asideB.style.height = '100%'
+        // a_asideB.style.border = '1px solid black'
+        // a_asideB.style.color = 'green';
+        // a_asideB.style.fontSize = '1em';
+        // a_asideB.style.textAlign = 'center';
+        // a_asideB.style.lineHeight = '500px';
+        // a_asideB.style.marginBottom = '10px';
+        // a_asideB.style.display = 'inline-block';
+        // a_asideB.style.float = 'right'
+
+        var asideB = document.createElement('aside');
+        asideB.innerHTML = "Aside B";
+        asideB.className = 'a_asideB';
+        div.appendChild(asideB);
+
+        asideB.style.width = '20%';
+        asideB.style.height = '100%';
+        asideB.style.border = '1px solid black';
+        asideB.style.color = 'green';
+        asideB.style.textAlign = 'center';
+        asideB.style.lineHeight = '500px';
+
+
+
+
+
+        // Footer
+
+
+        var f = document.createElement('footer');
+        f.innerHTML = 'Footer'
+        document.body.appendChild(f);
+        document.querySelector('footer').setAttribute('class', 'a_footer');
+
+        var footer = document.getElementsByClassName('a_footer');
+
+        //    console.log(footer);
+
+        footer[0].style.width = '100%';
+        footer[0].style.height = '200px';
+        footer[0].style.border = '2px solid black'
+        footer[0].style.color = 'green';
+        footer[0].style.fontSize = '3em';
+        footer[0].style.textAlign = 'center';
+        footer[0].style.lineHeight = '150px';
+
+
+
+
+        //console.log(y[0])
+        //console.log(x[0]);     
+    </script>
+</body>
+
+</html>
