@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var ul = document.createElement('ul');
+        document.body.appendChild(ul);
+        ul.style.listStyleType = 'none';
+
+
+        for (let i = 0; i <= 10; i++) {
+            let li = document.createElement('li');
+            li.setAttribute('class', 'a_li')
+            li.innerHTML = "Home";
+            ul.appendChild(li);
+
+        }
+        var y = document.getElementsByClassName('a_li');
+        console.log(y);
+
+        for (const key in y) {
+
+            console.log(key);
+            console.log(y[key]);
+            if (!isNaN(key)) {
+                y[key].style.color = 'red';
+            }
+
+
+
+        }
+
+        var x = document.querySelectorAll('.a_li');
+        console.log(typeof x);
+
+        x.forEach((currentValue, index, x) => {
+
+            currentValue.style.display = 'inline';
+            currentValue.style.padding = '2px';
+
+
+        });
+        console.log(x);
+
+
+
+         var  o1={
+                   name:'Ashok',
+                   lastname:'Thombre',
+                   mission:'To educate student',
+                   getFullName:function(){
+                         
+                    return this.name +" "+this.lastname;
+                   },
+                   getMission:function(){
+                       return this.mission;
+                   }
+         }
+
+          
+         for (const key in o1) {
+                  
+            console.log(o1[key]);
+            
+         }
+
+         console.log(o1.getFullName());
+        console.log(o1.getMission()); 
+
+
+
+    </script>
+</body>
+
+</html>
