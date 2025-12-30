@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var h = document.createElement('header');
+
+        h.setAttribute('class', 'a_header');
+        var d = document.createElement('div');
+        var f = document.createElement('footer');
+
+        h.innerHTML = "Header"
+
+
+
+        document.body.appendChild(h);
+        document.body.appendChild(d)
+
+        document.querySelector('header.a_header ~ div').setAttribute('class', 'a_main');
+
+        var m = document.getElementsByClassName('a_main');
+        //  console.log(m);
+        m[0].style.width = '100%'
+        m[0].style.height = "100px"
+        m[0].style.backgroundColor = 'red';
+
+        document.body.appendChild(f)
+        document.querySelector('div').innerHTML = "Main Area";
+        var fe = document.querySelector('div ~ footer');
+        fe.innerHTML = "Footer"
+
+        var b = document.createElement('button');
+        b.innerHTML = "Click Me";
+
+        fe.appendChild(b);
+
+        var be = document.getElementsByTagName('button');
+
+        console.log(be[0]);
+        be[0].addEventListener('click', () => {
+            m[0].style.backgroundColor = 'green';
+            console.log("Button clicked");
+        });
+
+
+        var hh = document.getElementsByTagName('head');
+
+        var l = document.createElement('link');
+        console.log(l);
+
+        var l = document.createElement('link');
+
+        l.setAttribute('rel', 'stylesheet');
+        l.setAttribute('href', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
+        l.setAttribute('integrity', 'sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==');
+        l.setAttribute('crossorigin', 'anonymous');
+        l.setAttribute('referrerpolicy', 'no-referrer');
+
+        hh[0].appendChild(l);
+
+
+        i = document.createElement('i');
+        i.classList.add("fa", "fa-home")
+        //  i.setAttribute('class','fa-home')
+        document.body.appendChild(i);
+        // i.style.display = 'block'
+        // i.style.width = '100px';
+        // i.style.height = '100px';
+        // i.style.border = '1px solid black';
+
+        console.log(i);
+        var i;
+
+        // console.log(b)
+        // console.log(h);
+        // console.log(d);
+        // console.log(f);
+    </script>
+</body>
+
+</html>
