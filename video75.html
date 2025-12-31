@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>OKLABS Students</h1>
+    <ul id="myList">
+        <li>Avinash</li>
+        <li>Abhishek</li>
+    </ul>
+
+    <button onclick="insert()">Insert</button>
+    <script>
+
+
+        function insert() {
+            var li = document.createElement('li');
+            var name = prompt("Enter Name");
+            const textNode = document.createTextNode(name);
+
+            li.appendChild(textNode);
+            var list = document.getElementById('myList');
+
+            // list.insertBefore(li, list.children[1]);
+            list.insertBefore(li, document.querySelector('#myList > li:first-child'));
+        }
+
+
+
+    </script>
+</body>
+
+</html>
