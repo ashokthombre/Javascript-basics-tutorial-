@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <title>API(Application programming interface)</title>
+</head>
+
+<body>
+
+    <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <button onclick="getData()">Click Me</button>
+
+    <table id="table">
+        <tr>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+    </table>
+
+    <script>
+
+        var tr = document.createElement('tr');
+        console.log(tr);
+        tr.setAttribute('class', 'tr')
+        document.getElementById('table').appendChild(tr);
+
+
+        class MyClass {
+
+
+            getName() {
+                console.log("Hello My Name is Ashok");
+            }
+        }
+
+        var obj = new MyClass();
+        obj.getName();
+
+
+        function getData() {
+            console.log("get Data");
+
+            getMyPhoto('https://jsonplaceholder.typicode.com/posts', function fun(response) {
+                console.log(response);
+            });
+
+
+            function getMyPhoto(url, f) {
+                
+                let req = new XMLHttpRequest()
+                req.open("GET", url);
+                req.send();
+                req.onload = function (response) {
+                    //      console.log(response);
+                    var y = JSON.parse(req.responseText);
+                    console.log(typeof y)
+                     document.querySelector('.spinner-grow').remove();
+
+                    y.forEach((element, index) => {
+
+                        var tr = document.createElement('tr');
+                        console.log(tr);
+                        tr.setAttribute('class', 'tr' + index)
+                        document.getElementById('table').appendChild(tr);
+
+                        var userId = document.createElement('td');
+                        console.log(userId);
+                        userId.innerHTML = element.userId;
+                        document.querySelector('.tr' + index).appendChild(userId);
+                        var id = document.createElement('td');
+                        id.innerHTML = element.id;
+                        console.log(id);
+                        document.querySelector('.tr' + index).appendChild(id);
+                        var title = document.createElement('td');
+                        title.innerHTML = element.title;
+                        console.log(title);
+                        document.querySelector('.tr' + index).appendChild(title);
+                        var bo = document.createElement('td');
+                        bo.innerHTML = element.body;
+                        console.log(bo);
+                        document.querySelector('.tr' + index).appendChild(bo);
+
+
+
+
+
+
+                        console.log(element);
+                    });
+
+                    //    console.log(y);
+                    //     for (const key in y) {
+                    //         if (!Object.hasOwn(y, key)) continue;
+
+                    //         const element = y[key];
+                    //         console.log(element.title);
+
+                    //     }
+                    var x = req.responseText;
+                    console.log(typeof x);
+
+                    f(response);
+                }
+
+
+
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
