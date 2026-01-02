@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="display: none;" id="loader">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Book Id</th>
+                <th scope="col">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <button class="btn btn-primary"> Get Author</button>
+    <script>
+
+
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+
+        }
+
+        function hideLoader() {
+            document.getElementById("loader").style.display = "none";
+        }
+
+        document.querySelector('.btn').addEventListener('click', function () {
+            console.log("Success");
+
+            var tr = '';
+
+            let po = new Promise(function (resolve, reject) {
+                showLoader();
+                $.ajax({
+                    url: 'https://fakerestapi.azurewebsites.net/api/v1/Authors',
+                    type: 'GET',
+                    success: function (result, status, xhr) {
+                 //       console.log(result);
+                        resolve(result);
+
+                    },
+                    error: function (xhr, status, error) {
+                        reject(error);
+                    }
+
+                });
+
+            });
+
+
+            po.then(function (data) {
+             //   console.log(data);
+
+                data.forEach((element, index, err) => {
+                  //  console.log(element.firstName);
+                    tr = tr + ` <tr>
+                                <th scope="row">`+ element.id + `</th>
+                                <td>`+ element.firstName + `</td>
+                                <td>`+ element.lastName + `</td>
+                                <td>`+ element.idBook + `</td>
+                                <td>        
+                                 
+                                                <button class="btn btn-success view-btn" data-id="${element.id}">View</button>
+                                                <button class="btn btn-primary edit-btn" data-id="${element.id}">Edit</button>
+                                                <button class="btn btn-danger delete-btn" data-id="${element.id}">Delete</button>
+                                               
+
+                                    </td>
+                            </tr>`
+
+
+                });
+
+             //   console.log(tr);
+                document.querySelector('.table > tbody').innerHTML = tr;
+                hideLoader();
+                  document.body.addEventListener("click", function (e) {
+                        if (e.target.classList.contains("view-btn")) {
+                            const id = e.target.dataset.id;
+                            console.log("Edit clicked for ID:", id);
+                            // edit logic
+                        }
+
+                 if (e.target.classList.contains("edit-btn")) {
+                            const id = e.target.dataset.id;
+                            console.log("Edit clicked for ID:", id);
+                            // edit logic
+                        }
+
+                        if (e.target.classList.contains("delete-btn")) {
+                            const id = e.target.dataset.id;
+                            console.log("Delete clicked for ID:", id);
+                            // delete logic
+                            e.target.closest('tr').remove();
+                        }
+
+
+                  })
+               
+            }).catch(function (error) {
+
+            }).
+                finally(console.log("finally"));
+        });
+
+
+    </script>
+</body>
+
+</html>
