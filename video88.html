@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">View Book</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A fourth item</li>
+                        <li class="list-group-item">And a fifth one</li>
+                        <li class="list-group-item">And a fifth one</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Book</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" >
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Id</label>
+                            <input type="text" class="form-control" id="id" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">pageCount</label>
+                            <input type="text" class="form-control" id="pagecount" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">excerpt</label>
+                            <input type="text" class="form-control" id="excerpt" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">publishDate</label>
+                            <input type="text" class="form-control" id="publishdate" aria-describedby="emailHelp">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary a_update">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loader" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <button class="btn btn-success get_data">Get</button>
+    <table class="table table-striped-columns">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">description</th>
+                <th scope="col">pageCount</th>
+                <th scope="col">excerpt</th>
+                <th scope="col">publishDate</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+        }
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+        }
+
+        var myurlobj = {
+            url: 'https://fakerestapi.azurewebsites.net/',
+            type: 'GET'
+        };
+        var tr = '';
+
+        document.querySelector('.get_data').addEventListener('click', function (e) {
+            showLoader();
+            // Swal.fire({
+            //     title: "Good job!",
+            //     text: "You clicked the button!",
+            //     icon: "success"
+            // });
+            //  toastr.success("My name is Inigo Montoya. You killed my father. Prepare to die!");
+            //  toastr.info('Are you the 6 fingered man?');
+
+            $.ajax({
+                ...myurlobj,
+                url: myurlobj.url + "api/v1/Books",
+                beforeSend: function () {
+
+                },
+                success: function (result, status, xhr) {
+
+                    // console.log(result);
+                    result.forEach((element, index, arr) => {
+
+                        tr = tr + `<tr>
+                                        <td scope="row">`+ element.id + `</td>
+                                        <td>`+ element.title + `</td>
+                                        <td>`+ element.description + `</td>
+                                        <td>`+ element.pageCount + `</td>
+                                        <td>`+ element.excerpt + `</td>
+                                        <td>`+ element.publishDate + `</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success view-btn" data-id=${element.id} data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
+                                            <button class="btn btn-sm btn-primary edit-btn"data-id=${element.id} data-bs-toggle="modal" data-bs-target="#exampleModal1">Edit</button>
+                                            <button class="btn btn-sm btn-danger  delete-btn"data-id=${element.id}>Delete</button>
+                                        </td>
+                                    </tr>`
+
+                        document.querySelector('.table > tbody').innerHTML = tr;
+                        hideLoader();
+
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                    hideLoader();
+                },
+                complete: function () {
+                    hideLoader();
+                }
+
+            })
+
+
+        })
+
+        document.body.addEventListener('click', function (e) {
+          
+            if (e.target.classList.contains('view-btn')) {
+
+                const id = e.target.dataset.id;
+                //console.log("View Btn clicked " + id)
+
+                let i = e.target.closest('tr').querySelector('td:first-child').innerHTML;
+                let title = e.target.closest('tr').querySelector('td:nth-child(2)').innerHTML;
+                let description = e.target.closest('tr').querySelector('td:nth-child(3)').innerHTML;
+                let pageCount = e.target.closest('tr').querySelector('td:nth-child(4)').innerHTML;
+                let excerpt = e.target.closest('tr').querySelector('td:nth-child(5)').innerHTML;
+                let publishDate = e.target.closest('tr').querySelector('td:nth-child(6)').innerHTML;
+
+                document.querySelector('.modal-body > .list-group >li:first-child ').innerHTML = i;
+                document.querySelector('.modal-body > .list-group >li:nth-child(2) ').innerHTML = title;;
+                document.querySelector('.modal-body > .list-group >li:nth-child(3) ').innerHTML = description;
+                document.querySelector('.modal-body > .list-group >li:nth-child(4) ').innerHTML = pageCount;
+                document.querySelector('.modal-body > .list-group >li:nth-child(5) ').innerHTML = excerpt;
+                document.querySelector('.modal-body > .list-group >li:nth-child(6) ').innerHTML = publishDate;
+            }
+            if (e.target.classList.contains('edit-btn')) {
+                const id = e.target.dataset.id;
+                let i = e.target.closest('tr').querySelector('td:first-child').innerHTML;
+                let title = e.target.closest('tr').querySelector('td:nth-child(2)').innerHTML;
+                let description = e.target.closest('tr').querySelector('td:nth-child(3)').innerHTML;
+                let pageCount = e.target.closest('tr').querySelector('td:nth-child(4)').innerHTML;
+                let excerpt = e.target.closest('tr').querySelector('td:nth-child(5)').innerHTML;
+                let publishDate = e.target.closest('tr').querySelector('td:nth-child(6)').innerHTML;
+
+                document.getElementById('id').value = i;
+                document.getElementById('title').value = title;
+                document.getElementById('description').value = description;
+                document.getElementById('pagecount').value = pageCount;
+                document.getElementById('excerpt').value = excerpt;
+                document.getElementById('publishdate').value = publishDate;
+
+
+                //  console.log("Edit Btn clicked " + id)
+            }
+            if (e.target.classList.contains('delete-btn')) {
+                const id = e.target.dataset.id;
+                //console.log("Delete Btn clicked " + id)
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            ...myurlobj,
+                            url: myurlobj.url + "api/v1/Books/" + id,
+                            type: "DELETE",
+                            success: function (result, status, xhr) {
+
+                                if (status === 'success') {
+                                    toastr.success("Record Is Deleted !");
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: "Your file has been deleted.",
+                                        icon: "success"
+                                    });
+                                    e.target.closest('tr').remove();
+                                }
+
+                            },
+                            error: function (xhr, status, error) {
+
+                            },
+                            complete: function () {
+
+                            }
+                        });
+
+
+                    }
+                });
+
+
+            }
+        });
+
+        // function mySubmit() {
+       
+            
+        
+           
+
+
+        // }
+
+        document.querySelector('.a_update').addEventListener('click',function(e){
+            e.preventDefault();
+             var id = document.getElementById('id').value;
+            var title = document.getElementById('title').value
+            var description = document.getElementById('description').value
+            var pageCount = document.getElementById('pagecount').value;
+            var excerpt = document.getElementById('excerpt').value
+            var publishDate = document.getElementById('publishdate').value
+
+            var myData = {
+                "id": id,
+                "title": title,
+                "description": description,
+                "pageCount": pageCount,
+                "excerpt": excerpt,
+                "publishDate": publishDate
+            }
+
+            $.ajax({
+                ...myurlobj,
+                url: myurlobj.url + 'api/v1/Books/' + id,
+                type: 'PUT',
+                data: JSON.stringify(myData),
+                contentType: 'application/json',
+                success: function (result, status, xhr) {
+                    Swal.fire({
+                        title: "Update!",
+                        text: "Record Is Updated",
+                        icon: "success"
+                    });
+
+                },
+                error: function (xhr, status, error) {
+                        console.log(status);
+
+                }
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
